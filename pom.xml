@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.meterware</groupId>
+    <groupId>com.xenoamess</groupId>
     <artifactId>multirelease-parent</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2.0</version>
     <packaging>pom</packaging>
     <name>MultiRelease Parent</name>
     <description>A parent POM to simplify creation of multi-release jars</description>
@@ -94,28 +94,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Use toolchains to select the compilers -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-toolchains-plugin</artifactId>
-                <version>${maven-toolchains-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>toolchain</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <toolchains>
-                        <jdk>
-                            <version>${base.java.version}</version>
-                            <vendor>${toolchain.vendor}</vendor>
-                        </jdk>
-                    </toolchains>
-                </configuration>
-            </plugin>
-
             <!-- define the possible compilations -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -515,7 +493,7 @@
         </profile>
 
         <profile>
-            <id>multi-jar</id>
+            <id>multi_release-jar</id>
             <activation>
                 <property>
                     <name>multi_release</name>
@@ -524,6 +502,27 @@
 
             <build>
                 <plugins>
+                    <!-- Use toolchains to select the compilers -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>${maven-toolchains-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>${base.java.version}</version>
+                                    <vendor>${toolchain.vendor}</vendor>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
 
                     <!-- enable java9 - java13 compilations -->
 
