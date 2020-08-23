@@ -6,9 +6,9 @@ Make this your parent POM:
 
 ```
     <parent>
-        <groupId>com.meterware</groupId>
+        <groupId>com.xenoamess</groupId>
         <artifactId>multirelease-parent</artifactId>
-        <version>1.0</version>
+        <version>1.2.0</version>
     </parent>
 ```
 
